@@ -48,10 +48,21 @@ require('lazy').setup({
 --   },
   'onsails/lspkind.nvim',
   {
+    -- Install markdown preview, use npx if available.
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
-    build = function() vim.fn["mkdp#util#install"]() end,
+    build = function(plugin)
+      if vim.fn.executable "npx" then
+        vim.cmd("!cd " .. plugin.dir .. " && cd app && npx --yes yarn install")
+      else
+        vim.cmd [[Lazy load markdown-preview.nvim]]
+        vim.fn["mkdp#util#install"]()
+      end
+    end,
+    init = function()
+      if vim.fn.executable "npx" then vim.g.mkdp_filetypes = { "markdown" } end
+    end,
   },
   "preservim/vim-pencil",
   {
@@ -83,7 +94,18 @@ require('lazy').setup({
   --   end,
   -- },
 
---   'ThePrimeagen/git-worktree.nvim',
+  {
+    'ThePrimeagen/git-worktree.nvim',
+    config = function ()
+      require("git-worktree").setup {
+        -- change_directory_command = <str> -- default: "cd",
+        -- update_on_change = <boolean> -- default: true,
+        -- update_on_change_command = <str> -- default: "e .",
+        -- clearjumps_on_change = <boolean> -- default: true,
+        -- autopush = <boolean> -- default: false,
+      }
+    end
+  }
   {
     'stevearc/oil.nvim',
     opts = {},
@@ -273,7 +295,7 @@ require('lazy').setup({
     dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"}
   },
 --   'theHamsta/nvim-dap-virtual-text',
---   'leoluz/nvim-dap-go',
+  'leoluz/nvim-dap-go',
 
   -- Git related plugins
   'tpope/vim-fugitive',
