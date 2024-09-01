@@ -1,12 +1,21 @@
+vim.cmd.expandtab = true
+vim.cmd.tabstop = 4
+vim.cmd.softtabstop = 2
+vim.cmd.shiftwidth = 2
+vim.cmd.title = true
+vim.cmd.noexpandtab = true
+vim.cmd.number = true
+vim.cmd.cursorline = true
+
 -- Set highlight on search
 vim.o.hlsearch = true
 
 -- Make line numbers default
 vim.wo.number = true
-vim.o.relativenumber = true
+-- vim.o.relativenumber = true
 
 -- Disable mouse mode
-vim.o.mouse = ''
+-- vim.o.mouse = ''
 
 -- Enable break indent
 vim.o.breakindent = true

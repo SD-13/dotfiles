@@ -21,16 +21,10 @@ require('lazy').setup({
     branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" }
   },
-  {
-    "NvChad/nvterm",
-    config = function ()
-      require("nvterm").setup()
-    end,
-  },
-  {
-    "mistricky/codesnap.nvim",
-    build = "make",
-  },
+--   {
+--     "mistricky/codesnap.nvim",
+--     build = "make",
+--   },
   {
     "NeogitOrg/neogit",
     lazy = false,
@@ -41,18 +35,18 @@ require('lazy').setup({
     },
     config = true
   },
---  {
---    'Exafunction/codeium.vim',
---    event = "InsertEnter",
---    config = function ()
---      -- Change '<C-g>' here to any keycode you like.
---      vim.keymap.set('i', '<C-e>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
---      vim.keymap.set('i', '<c-n>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
---      vim.keymap.set('i', '<c-p>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
---      vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
---    end
---  },
---  'onsails/lspkind.nvim',
+--   {
+--     'Exafunction/codeium.vim',
+--     event = "InsertEnter",
+--     config = function ()
+--       -- Change '<C-g>' here to any keycode you like.
+--       vim.keymap.set('i', '<C-e>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
+--       vim.keymap.set('i', '<c-n>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
+--       vim.keymap.set('i', '<c-p>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
+--       vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+--     end
+--   },
+  'onsails/lspkind.nvim',
   {
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
@@ -72,41 +66,31 @@ require('lazy').setup({
   'folke/zen-mode.nvim',
   'tpope/vim-obsession',
   -- Tree
---  {
---    "nvim-tree/nvim-tree.lua",
---    version = "*",
---    lazy = true,
---    requires = {
---      "nvim-tree/nvim-web-devicons",
---    },
---    config = function()
---      require("nvim-tree").setup({
---        vim.api.nvim_set_keymap("n", "ff", ":NvimTreeToggle<enter>", { noremap=false })
---        vim.keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" })
---        vim.keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" })
---        vim.keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" })
---      })
---    end,
---  },
---
-  {
-  "nvim-tree/nvim-tree.lua",
-  version = "*",
-  lazy = true,
-  dependencies = {
-    "nvim-tree/nvim-web-devicons",
-  },
-  config = function()
-    require("nvim-tree").setup {
-	default_mapping = true;
---        vim.keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle", { desc = "Toggle file explorer on current file" })
---        vim.keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse", { desc = "Collapse file explorer" })
---        vim.keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh", { desc = "Refresh file explorer" })
-      }
-  end,
-  },
+  -- {
+  --   "nvim-tree/nvim-tree.lua",
+  --   version = "*",
+  --   lazy = true,
+  --   requires = {
+  --     "nvim-tree/nvim-web-devicons",
+  --   },
+  --   config = function()
+  --     require("nvim-tree").setup({
+  --       vim.api.nvim_set_keymap("n", "ff", ":NvimTreeToggle<enter>", { noremap=false }) 
+  --       -- vim.keymap.set("n", "<leader>ef", "<cmd>NvimTreeFindFileToggle<CR>", { desc = "Toggle file explorer on current file" }) 
+  --       -- vim.keymap.set("n", "<leader>ec", "<cmd>NvimTreeCollapse<CR>", { desc = "Collapse file explorer" }) 
+  --       -- vim.keymap.set("n", "<leader>er", "<cmd>NvimTreeRefresh<CR>", { desc = "Refresh file explorer" }) 
+  --     })
+  --   end,
+  -- },
 
-  'ThePrimeagen/git-worktree.nvim',
+--   'ThePrimeagen/git-worktree.nvim',
+  {
+    'stevearc/oil.nvim',
+    opts = {},
+    -- Optional dependencies
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+  },
   "tpope/vim-surround",
   'xiyaowong/nvim-transparent',
   {
@@ -288,8 +272,8 @@ require('lazy').setup({
     "rcarriga/nvim-dap-ui",
     dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"}
   },
-  'theHamsta/nvim-dap-virtual-text',
-  'leoluz/nvim-dap-go',
+--   'theHamsta/nvim-dap-virtual-text',
+--   'leoluz/nvim-dap-go',
 
   -- Git related plugins
   'tpope/vim-fugitive',

@@ -1,19 +1,19 @@
 require('keymaps')
+require('misc')
+require('options')
 require('plugins.lazy')
 require('plugins.misc')
 require('plugins.lualine')
-require('options')
-require('misc')
 require('plugins.dap')
 require('plugins.gitsigns')
 require('plugins.tele')
 require('plugins.treesitter')
 require('plugins.lsp')
 require('plugins.trouble')
--- require('plugins.obsidian')
+require('plugins.obsidian')
 require('plugins.zenmode')
 require('plugins.neogit')
-require('plugins.codesnap')
+-- require('plugins.codesnap')
 require('plugins.harpoon')
 
 --- for the nvim-terminal
@@ -70,7 +70,7 @@ require('plugins.harpoon')
 --    end
 --}
 
-vim.keymap.set({'n', 't'}, '<A-h>', function () require("nvterm.terminal").toggle('horizontal') end, { desc = '[A]ctivate terminal [H]orizontal' })
-vim.keymap.set({'n', 't'}, '<A-v>', function () require("nvterm.terminal").toggle('vertical') end, { desc = '[A]ctivate terminal [V]ertical' })
-vim.keymap.set({'n', 't'}, '<A-i>', function () require("nvterm.terminal").toggle('float') end, { desc = '[A]ctivate terminal [I]Floating' })
+-- vim.keymap.set({'n', 't'}, '<A-h>', function () require("nvterm.terminal").toggle('horizontal') end, { desc = '[A]ctivate terminal [H]orizontal' })
+-- vim.keymap.set({'n', 't'}, '<A-v>', function () require("nvterm.terminal").toggle('vertical') end, { desc = '[A]ctivate terminal [V]ertical' })
+-- vim.keymap.set({'n', 't'}, '<A-i>', function () require("nvterm.terminal").toggle('float') end, { desc = '[A]ctivate terminal [I]Floating' })
 -- vim: ts=8 sts=2 sw=2 et
