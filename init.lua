@@ -1,20 +1,22 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
-  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
-  if vim.v.shell_error ~= 0 then
-    vim.api.nvim_echo({
-      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
-      { out, "WarningMsg" },
-      { "\nPress any key to exit..." },
-    }, true, {})
-    vim.fn.getchar()
-    os.exit(1)
-  end
-end
-vim.opt.rtp:prepend(lazypath)
+require('keymaps')
+require('plugins.lazy')
+require('plugins.misc')
+require('plugins.lualine')
+require('options')
+require('misc')
+require('plugins.dap')
+require('plugins.gitsigns')
+require('plugins.tele')
+require('plugins.treesitter')
+require('plugins.lsp')
+require('plugins.trouble')
+require('plugins.obsidian')
+require('plugins.zenmode')
+require('plugins.neogit')
+require('plugins.codesnap')
+require('plugins.harpoon')
+require('plugins.oil')
 
-require("vim-options")
-require("lazy").setup("plugins")
--- Oil keymap
-vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+
+-- vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+-- vim: ts=8 sts=2 sw=2 et
