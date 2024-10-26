@@ -85,14 +85,14 @@ plugins=(
     git
 #    zsh-autosuggestions
 #    zsh-syntax-highlighting
-    kube-ps1
-    kubectl
+#    kube-ps1
+#    kubectl
 )
 
 source $ZSH/oh-my-zsh.sh
 
 # kube-ps1
-PROMPT='$(kube_ps1)'$'\n'$PROMPT
+# PROMPT='$(kube_ps1)'$'\n'$PROMPT
 
 
 # User configuration
@@ -123,13 +123,14 @@ export EDITOR="nvim"
 
 
 alias ls='eza'
-alias 'll'='eza -l'
-alias 'la'='eza -halo'
-alias gpo='git push origin'
-alias gplo='git pull origin'
+# alias 'll'='eza -l'
+# alias 'la'='eza -halo'
+# alias gpo='git push origin'
+# alias gplo='git pull origin'
 alias g='git'
 alias gcs='git commit -s'
 alias cls='clear'
+alias gc='git clone'
 
 alias vi='nvim'
 # alias vi='lvim'
@@ -142,8 +143,8 @@ alias vi='nvim'
 alias d=docker
 
 
-alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
-alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
+# alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
+# alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
 
 export LESS_TERMCAP_mb=$'\e[1;32m'
 export LESS_TERMCAP_md=$'\e[1;32m'
@@ -171,14 +172,14 @@ autoload -Uz compinit && compinit
 
 # alias mirrordisplay='xrandr --output "eDP-1" --auto --output "HDMI-1" --same-as "eDP-1"'
 
-alias normaldisplay='xrandr --output "eDP-1" --auto'
+# alias normaldisplay='xrandr --output "eDP-1" --auto'
 
 # alias conservativemode='sudo sed -i s/STOP_CHARGE_THRESH_BAT0=0/STOP_CHARGE_THRESH_BAT0=1/g /etc/tlp.conf && sudo tlp start'
 # alias normalmode='sudo sed -i s/STOP_CHARGE_THRESH_BAT0=1/STOP_CHARGE_THRESH_BAT0=0/g /etc/tlp.conf && sudo tlp start'
 
-alias batmode='sudo sed -i s/TLP_DEFAULT_MODE=AC/TLP_DEFAULT_MODE=BAT/g /etc/tlp.conf && sudo tlp start'
+# alias batmode='sudo sed -i s/TLP_DEFAULT_MODE=AC/TLP_DEFAULT_MODE=BAT/g /etc/tlp.conf && sudo tlp start'
 
-alias acmode='sudo sed -i s/TLP_DEFAULT_MODE=BAT/TLP_DEFAULT_MODE=AC/g /etc/tlp.conf && sudo tlp start'
+# alias acmode='sudo sed -i s/TLP_DEFAULT_MODE=BAT/TLP_DEFAULT_MODE=AC/g /etc/tlp.conf && sudo tlp start'
 
 # export GPG_TTY=$(tty)
 # fpath=($fpath "/home/dipankar/.zfunctions")
@@ -187,7 +188,7 @@ alias acmode='sudo sed -i s/TLP_DEFAULT_MODE=BAT/TLP_DEFAULT_MODE=AC/g /etc/tlp.
 
 # export PATH=/home/dipankar/.groundcover/bin:${PATH}
 
-alias openpdf="evince"
+# alias openpdf="evince"
 
 
 # export WASMTIME_HOME="$HOME/.wasmtime"
@@ -202,9 +203,9 @@ alias openpdf="evince"
 # [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # export FZF_DEFAULT_OPS="--extended"
 
-export PATH="$PATH:$HOME/.protobuff/bin"
+# export PATH="$PATH:$HOME/.protobuff/bin"
 
-alias tf="terraform"
+# alias tf="terraform"
 
 alias soundControl="pavucontrol"
 
@@ -226,5 +227,14 @@ alias k=kubectl
 complete -o default -F __start_kubectl k
 # source <(kind completion zsh)
 source <(helm completion zsh)
-
+# source <(arkade completion zsh)
 eval "$(starship init zsh)"
+
+# pyenv oppia
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
