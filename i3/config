@@ -387,7 +387,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 # Set brightness in HDMI
 exec xrandr --output HDMI-1 --brightness 1.0
 # Set brightness in eDP
-exec xrandr --output eDP-1 --brightness 0.3
+exec xrandr --output eDP --brightness 0.3
 
 # kill any hanging polybar processes
 exec_always killall polybar
@@ -420,8 +420,8 @@ exec --no-startup-id ~/.screenlayout/monitor.sh
 
 # set wallpaper
 # exec --no-startup-id sleep 2 && nitrogen --restore
-# exec --no-startup-id sleep 1 && feh --bg-fill ~/nice-blue-background.png
-exec_always feh --bg-scale ~/i3/images/nice-blue-background.png
+# exec --no-startup-id sleep 1 && feh --bg-fill $HOME/.config/images/nice-blue-background.png
+exec_always feh --bg-scale $HOME/.config/i3/images/nice-blue-background.png
 
 # set powersavings for display:
 exec --no-startup-id xset s 480 dpms 600 600 600
