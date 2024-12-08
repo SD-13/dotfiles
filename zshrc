@@ -129,6 +129,7 @@ alias gpo='git push origin'
 alias gplo='git pull origin'
 alias g='git'
 alias gcs='git commit -s'
+alias gc='git clone'
 alias cls='clear'
 
 alias vi='nvim'
@@ -140,10 +141,15 @@ alias vi='nvim'
 # export PATH="$PATH:/home/dipankar/istio-1.18.0/bin"
 
 alias d=docker
+alias g=git
 
 
 alias docker_clean_images='docker rmi $(docker images -a --filter=dangling=true -q)'
 alias docker_clean_ps='docker rm $(docker ps --filter=status=exited --filter=status=created -q)'
+
+# Git
+alias gf='git fetch upstream'
+alias gr='git rebase upstream/stage'
 
 export LESS_TERMCAP_mb=$'\e[1;32m'
 export LESS_TERMCAP_md=$'\e[1;32m'
@@ -208,12 +214,7 @@ alias tf="terraform"
 
 alias soundControl="pavucontrol"
 
-
-
-
-# . "/home/dipankar/.wasmedge/env"
-
-export TERM=alacritty
+export TERM=tmux
 
 # export TERM="xterm-256color"
 
@@ -228,3 +229,15 @@ complete -o default -F __start_kubectl k
 source <(helm completion zsh)
 
 eval "$(starship init zsh)"
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+
+eval "$(pyenv init -)"
+eval "$(pyenv virtualenv-init -)"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/home/jack/google-cloud-sdk/path.zsh.inc' ]; then . '/home/jack/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/home/jack/google-cloud-sdk/completion.zsh.inc' ]; then . '/home/jack/google-cloud-sdk/completion.zsh.inc'; fi
