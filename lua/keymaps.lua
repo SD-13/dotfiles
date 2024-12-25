@@ -14,12 +14,6 @@ vim.api.nvim_set_keymap("n", "E", "$", {noremap=false})
 vim.api.nvim_set_keymap("n", "B", "^", {noremap=false})
 vim.api.nvim_set_keymap("n", "TT", ":TransparentToggle<CR>", {noremap=true})
 vim.api.nvim_set_keymap("n", "ss", ":noh<CR>", {noremap=true})
-
-
---- for the nvim-terminal
-vim.keymap.set({'n', 't'}, '<A-h>', function () require("nvterm.terminal").toggle('horizontal') end, { desc = '[A]ctivate terminal [H]orizontal' })
-vim.keymap.set({'n', 't'}, '<A-v>', function () require("nvterm.terminal").toggle('vertical') end, { desc = '[A]ctivate terminal [V]ertical' })
-vim.keymap.set({'n', 't'}, '<A-i>', function () require("nvterm.terminal").toggle('float') end, { desc = '[A]ctivate terminal [I]Floating' })
 --
 -- splits
 --

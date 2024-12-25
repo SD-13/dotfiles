@@ -21,10 +21,10 @@ require('lazy').setup({
     branch = "harpoon2",
     dependencies = { "nvim-lua/plenary.nvim" }
   },
---   {
---     "mistricky/codesnap.nvim",
---     build = "make",
---   },
+  {
+    "mistricky/codesnap.nvim",
+    build = "make",
+  },
   {
     "NeogitOrg/neogit",
     lazy = false,
@@ -35,34 +35,51 @@ require('lazy').setup({
     },
     config = true
   },
---   {
---     'Exafunction/codeium.vim',
---     event = "InsertEnter",
---     config = function ()
---       -- Change '<C-g>' here to any keycode you like.
---       vim.keymap.set('i', '<C-e>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
---       vim.keymap.set('i', '<c-n>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
---       vim.keymap.set('i', '<c-p>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
---       vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
---     end
---   },
+  {
+    'nvim-lualine/lualine.nvim',
+		config = function()
+			require('lualine').setup({
+				options = {
+				theme = 'dracula'
+				}
+			})
+		end
+	},
+  {
+		"willothy/nvim-cokeline",
+		dependencies = {
+			"nvim-lua/plenary.nvim",        -- Required for v0.4.0+
+			"nvim-tree/nvim-web-devicons", -- If you want devicons
+			"stevearc/resession.nvim"       -- Optional, for persistent history
+		},
+		config = true
+	},
+  {
+    "NvChad/nvterm",
+    config = function ()
+      require("nvterm").setup()
+			vim.keymap.set({'n', 't'}, '<A-h>', function () require("nvterm.terminal").toggle('horizontal') end, { desc = '[A]ctivate terminal [H]orizontal' })
+			vim.keymap.set({'n', 't'}, '<A-v>', function () require("nvterm.terminal").toggle('vertical') end, { desc = '[A]ctivate terminal [V]ertical' })
+			vim.keymap.set({'n', 't'}, '<A-i>', function () require("nvterm.terminal").toggle('float') end, { desc = '[A]ctivate terminal [I]Floating' })
+		end,
+  },
+  -- {
+  --   'Exafunction/codeium.vim',
+  --   event = "InsertEnter",
+  --   config = function ()
+  --     -- Change '<C-g>' here to any keycode you like.
+  --     vim.keymap.set('i', '<C-e>', function () return vim.fn['codeium#Accept']() end, { expr = true, silent = true })
+  --     vim.keymap.set('i', '<c-n>', function() return vim.fn['codeium#CycleCompletions'](1) end, { expr = true, silent = true })
+  --     vim.keymap.set('i', '<c-p>', function() return vim.fn['codeium#CycleCompletions'](-1) end, { expr = true, silent = true })
+  --     vim.keymap.set('i', '<c-x>', function() return vim.fn['codeium#Clear']() end, { expr = true, silent = true })
+  --   end
+  -- },
   'onsails/lspkind.nvim',
   {
-    -- Install markdown preview, use npx if available.
     "iamcco/markdown-preview.nvim",
     cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
     ft = { "markdown" },
-    build = function(plugin)
-      if vim.fn.executable "npx" then
-        vim.cmd("!cd " .. plugin.dir .. " && cd app && npx --yes yarn install")
-      else
-        vim.cmd [[Lazy load markdown-preview.nvim]]
-        vim.fn["mkdp#util#install"]()
-      end
-    end,
-    init = function()
-      if vim.fn.executable "npx" then vim.g.mkdp_filetypes = { "markdown" } end
-    end,
+    build = function() vim.fn["mkdp#util#install"]() end,
   },
   "preservim/vim-pencil",
   {
@@ -75,6 +92,20 @@ require('lazy').setup({
     },
   },
   'folke/zen-mode.nvim',
+  {
+    'stevearc/oil.nvim',
+    ---@module 'oil'
+    ---@type oil.SetupOpts
+    opts = {},
+    -- Optional dependencies
+    dependencies = { { "echasnovski/mini.icons", opts = {} } },
+    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
+    config = function ()
+      require("oil").setup({
+        vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
+      })
+    end,
+  },
   'tpope/vim-obsession',
   -- Tree
   -- {
@@ -94,25 +125,7 @@ require('lazy').setup({
   --   end,
   -- },
 
-  {
-    'ThePrimeagen/git-worktree.nvim',
-    config = function ()
-      require("git-worktree").setup {
-        -- change_directory_command = <str> -- default: "cd",
-        -- update_on_change = <boolean> -- default: true,
-        -- update_on_change_command = <str> -- default: "e .",
-        -- clearjumps_on_change = <boolean> -- default: true,
-        -- autopush = <boolean> -- default: false,
-      }
-    end
-  }
-  {
-    'stevearc/oil.nvim',
-    opts = {},
-    -- Optional dependencies
-    dependencies = { { "echasnovski/mini.icons", opts = {} } },
-    -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if prefer nvim-web-devicons
-  },
+  'ThePrimeagen/git-worktree.nvim',
   "tpope/vim-surround",
   'xiyaowong/nvim-transparent',
   {
@@ -294,7 +307,7 @@ require('lazy').setup({
     "rcarriga/nvim-dap-ui",
     dependencies = {"mfussenegger/nvim-dap", "nvim-neotest/nvim-nio"}
   },
---   'theHamsta/nvim-dap-virtual-text',
+  'theHamsta/nvim-dap-virtual-text',
   'leoluz/nvim-dap-go',
 
   -- Git related plugins
@@ -323,5 +336,22 @@ require('lazy').setup({
       -- or leave it empty to use the default settings
       -- refer to the configuration section below
     }
+  },
+  { 
+    "startup-nvim/startup.nvim",
+    requires = {"nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim"},
+    config = function()
+      require "startup".setup()
+    end
+  },
+  {
+    -- vim-go
+    "fatih/vim-go"
+  },
+  {
+    "folke/todo-comments.nvim",
+    config = function()
+      require("todo-comments").setup({})
+    end
   },
 })
