@@ -15,8 +15,4 @@ require('plugins.zenmode')
 require('plugins.neogit')
 require('plugins.codesnap')
 require('plugins.harpoon')
-require('plugins.oil')
-
-
--- vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
--- vim: ts=8 sts=2 sw=2 et
+require('plugins.cmp')

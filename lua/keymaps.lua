@@ -19,6 +19,12 @@ vim.api.nvim_set_keymap("n", "ss", ":noh<CR>", {noremap=true})
 --
 vim.api.nvim_set_keymap("n", "<C-W>,", ":vertical resize -10<CR>", {noremap=true})
 vim.api.nvim_set_keymap("n", "<C-W>.", ":vertical resize +10<CR>", {noremap=true})
+vim.keymap.set("n", "-", function()
+  local buf_name = vim.api.nvim_buf_get_name(0)
+  local path = vim.fn.filereadable(buf_name) == 1 and buf_name or vim.fn.getcwd()
+  MiniFiles.open(path)
+  MiniFiles.reveal_cwd()
+end, { desc = "Open Mini Files" })
 vim.keymap.set('n', '<space><space>', "<cmd>set nohlsearch<CR>")
 -- Quicker close split
 vim.keymap.set("n", "<leader>qq", ":q<CR>",
